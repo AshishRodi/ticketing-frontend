@@ -9,11 +9,21 @@ async function loadRazorpay() {
 }
 
 async function payNow() {
-  const token = "someverystrongsecretkey";
+
+  // IMPORTANT: User must login first and get real JWT token
+  const token = localStorage.getItem("token");
+  if (!token) {
+    alert("Please login first!");
+    return;
+  }
+
   const ticketId = 1;
   const amount = 50000;
 
-  const res = await fetch("http://localhost:3000/api/payment/create-order", {
+  // Use your EC2 backend URL
+  const backend = "http://13.203.205.182:3000";
+
+  const res = await fetch(`${backend}/api/payment/create-order`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -36,7 +46,8 @@ async function payNow() {
     currency: "INR",
     order_id: order.id,
     handler: async function (response) {
-      const verifyRes = await fetch("http://localhost:3000/api/payment/verify", {
+
+      const verifyRes = await fetch(`${backend}/api/payment/verify`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
