@@ -1,12 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Ticket Payment</title>
+  <meta charset="UTF-8" />
+  <title>Ticketing App</title>
 </head>
 <body>
-    <h1>Book Ticket</h1>
-    <button onclick="payNow()">Pay Now</button>
 
-    <script src="script.js"></script>
+  <h1>Ticketing System</h1>
+
+  <h2>Register</h2>
+  <input id="regName" placeholder="Name"><br><br>
+  <input id="regEmail" placeholder="Email"><br><br>
+  <input id="regPass" placeholder="Password" type="password"><br><br>
+  <button onclick="register()">Register</button>
+
+  <hr><br>
+
+  <h2>Login</h2>
+  <input id="loginEmail" placeholder="Email"><br><br>
+  <input id="loginPass" placeholder="Password" type="password"><br><br>
+  <button onclick="login()">Login</button>
+
+  <hr><br>
+
+  <h2>Payment</h2>
+  <button onclick="payNow()">Pay Now</button>
+
+
+  <script src="script.js"></script>
 </body>
-</html> 
+</html>
